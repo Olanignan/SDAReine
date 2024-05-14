@@ -1,0 +1,71 @@
+---
+title: "Séance 4"
+author: "Queen"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## INTRODUCTION 
+
+Cette introduction a été saisie par Reine Olanignan
+
+```{r}
+library(gsheet)
+library(dplyr)
+library(tidyr)
+library(readr)
+```
+
+
+```{r}
+dataUnido <- gsheet::gsheet2tbl("https://docs.google.com/spreadsheets/d/1uLaXke-KPN28-ESPPoihk8TiXVWp5xuNGHW7w7yqLCc/edit#gid=416085055")
+```
+
+```{r}
+library(dplyr)
+
+dataUnido %>% glimpse()
+```
+
+```{r}
+library(gsheet)
+
+VariablesUnido <- gsheet::gsheet2tbl("https://docs.google.com/spreadsheets/d/1uLaXke-KPN28-ESPPoihk8TiXVWp5xuNGHW7w7yqLCc/edit#gid=416085055")
+```
+
+```{r}
+# Add a new column called 'newColumn'
+dataUnido$newColumn <- 42
+
+# Show the columns' name
+colnames(dataUnido)
+```
+
+```{r}
+# Show the column 'newColumn'
+dataUnido[,"newColumn"]
+```
+
+```{r}
+# Multiply by 2 and add 5
+dataUnido$newColumn <- dataUnido$newColumn * 2 + 5
+
+# Show the column 'newColumn'
+dataUnido[,"newColumn"]
+```
+
+```{r}
+library(dplyr)
+
+# Rename the newColumn
+dataUnido <- dataUnido %>% 
+  dplyr::rename(newColumnRenamed = newColumn)
+
+colnames(dataUnido)
+```
+
